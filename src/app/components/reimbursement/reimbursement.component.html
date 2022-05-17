@@ -1,0 +1,14 @@
+<div class="reimbursement-cards">
+  <mat-grid-list cols="3" rowheight="600px">
+    <mat-grid-tile *ngFor="let reimbursement of (reimbursements | async)">
+      <!-- <mat-card (click)="selectProduct(product.id)" class="mat-elevation-z0"> -->
+        <mat-card-title>{{reimbursement.type}}</mat-card-title>
+        <mat-card-subtitle>{{reimbursement.description}}</mat-card-subtitle>
+        <mat-card-content>
+          <img mat-card-image src="{{reimbursement.receipt}}" alt="No picture">
+          ${{reimbursement.amount}}
+        </mat-card-content>
+      <!-- </mat-card> -->
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -1,0 +1,17 @@
+.spacer {
+  flex: 1 2 auto;
+  text-align: right;
+}
+
+mat-toolbar {
+  background-color: rgb(49, 34, 6);
+  color: white;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+#logout {
+    cursor: pointer;
+}
+

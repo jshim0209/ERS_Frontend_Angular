@@ -1,24 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
-/* This is to remove padding around navbar by suppressing browser margin */
 body {
-  margin: 0px;
-  padding: 0px;
-}
+  height:100%;
+  }
 
-body{
-  color: #222;
-  background-color: #f00;
-  /* color: white; */
-  /* btn-bg-color: rgb(11, 88, 160); */
-}
-body.dark-theme {
-  color: #eee;
-  background-color: #252222;
-  /* color: rgb(46, 43, 43); */
-  /* --btn-bg-color: rgb(20, 211, 195); */
-}
-body {
-  background: var(--bkg-color);
-}
+  :root {
+    --blue: #1e90ff;
+    --oragnge: #fba92c;
+    --gray: #565656;
+  }
+
+  body *{
+      box-sizing: border-box;
+      margin: 0;
+      padding:0;
+  }
+
+  .hoverwell:hover {
+      background-color: #485563;
+      cursor: pointer;
+    }
+
+    .container {
+      padding-top: 10px;
+    }
+
+    .pointable {
+      cursor: pointer;
+    }
+
+    button {
+      color: #555;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .toast-success {
+      background-color: #51a351;
+    }
+    .toast-error {
+      background-color: #bd362f;
+    }
+    .toast-info {
+      background-color: #2f96b4;
+    }
+    .toast-warning {
+      background-color: #f89406;
+    }
