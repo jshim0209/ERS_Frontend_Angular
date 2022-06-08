@@ -1,17 +1,42 @@
-<div class="container-fluid">
-  <form class="login-form" [formGroup]="loginForm">
-      <h1 class="title form-title">Please log in</h1>
-      <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="username" formControlName="username">
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>ERS</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-md-image src="../../../assets/images/benjamin_head.png" alt="">
+  <mat-card-content>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <mat-form-field>
+        <input
+        matInput type="text"
+        name="username"
+        id="username"
+        placeholder="Username"
+        ngModel
+        required
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+        matInput type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+        ngModel
+        required
+        >
+      </mat-form-field>
+      <div>
+        <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
       </div>
-      <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" formControlName="password">
+      <div>
+        <button
+        mat-raised-button
+        type="submit"
+        [disabled]="!authForm.valid "
+        >Login</button>
       </div>
-      <button type="submit" class="btn btn-primary login-btn" (click)="loginUser()">Log In</button>
-  </form>
-
-  <!-- *ngIf <- errorMessage is truthy if we have a string that has characters, falsy if not -->
-  <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
-</div>
+    </form>
+  </mat-card-content>
+</mat-card>

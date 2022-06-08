@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { UserRole } from 'src/app/models/UserRole';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Router } from '@angular/router'
-
+import { ReimbursementService } from 'src/app/services/reimbursement/reimbursement.service';
 
 @Component({
   selector: 'app-login',
@@ -12,31 +12,34 @@ import { Router } from '@angular/router'
 export class LoginComponent implements OnInit {
 
   errorMessage!: string;
-  //fields/properties
-  //fields/properties
-  loginForm!: FormGroup;
+  currentUser: any;
+  userRole!: UserRole;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {}
+  constructor(
+    private authService: AuthService,
+    // private reimbService: ReimbursementService
+
+    ) {}
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-    });
 
-  // Have LoginComponent subscribe to the loginErrorSubject that exists inside of the loginService object
-    // Whenever something publishes to the loginErrorSubject, any subscriber will receive that information (callback function
-    // will be invoked)
     this.authService.loginErrorSubject.subscribe((errMsg) => {
       this.errorMessage = errMsg;
     });
   }
 
-  loginUser(){
-    //1. get login form data from the html form
-    const user = this.loginForm.value;
-    console.log(user);
-    //2. sign user in
-    this.authService.login(user.username, user.password);
+  onSubmit(form: NgForm) {
+      const username = form.value.username;
+      const password = form.value.password;
+      this.authService.login(username, password);
   }
+
+  // ngOnDestroy(): void {
+
+  //   this.reimbService.getAllReimbursements().unsubscribe();
+
+  //   this.reimbService.getReimbursementByUser().unsubscribe();
+
+  // }
+
 }

@@ -1,10 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
 import { ReimbursementDto } from "src/app/models/ReimbursementDto";
-import { UserDto } from "src/app/models/UserDto";
-import { AuthService } from "src/app/services/auth/auth.service";
 import { ReimbursementService } from "src/app/services/reimbursement/reimbursement.service";
-
 
 @Component({
   selector: 'app-manager-home',
@@ -12,20 +8,27 @@ import { ReimbursementService } from "src/app/services/reimbursement/reimburseme
   styleUrls: ['./manager-home.component.css']
 })
 export class ManagerHomeComponent implements OnInit {
+
   reimbursementDtos!: ReimbursementDto[];
 
-  url!: string;
-  user = JSON.parse(localStorage.getItem("user_info") || "");
+  user = JSON.parse(localStorage.getItem("user") || "");
   firstName = this.user.firstName;
 
-  constructor(private authService: AuthService, private router: Router, private reimbursementService: ReimbursementService) { }
+  constructor(private reimbursementService: ReimbursementService) { }
+
+  getAllReimbursements() {
+
+    this.reimbursementService.getAllReimbursements().subscribe(data => {
+      if(data) this.reimbursementDtos = data;
+      // next: (data) => {
+      //   this.reimbursementDtos = data;
+      // }
+    });
+  }
 
   ngOnInit(): void {
-    this.reimbursementService.getAllReimbursements().subscribe((data) => {
-      this.reimbursementDtos = data;
-    });
 
-
+    this.getAllReimbursements();
   }
 
 }

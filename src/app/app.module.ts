@@ -22,7 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './components/form/form.component';
-import { ReimbursementComponent } from './components/reimbursement/reimbursement.component';
 import { ManagerHomeComponent } from './components/manager-home/manager-home.component';
 import { EmployeeHomeComponent } from './components/employee-home/employee-home.component';
 
@@ -38,7 +37,6 @@ import { EmployeeHomeComponent } from './components/employee-home/employee-home.
     NavbarComponent,
     RegisterComponent,
     FormComponent,
-    ReimbursementComponent,
     ManagerHomeComponent,
     EmployeeHomeComponent,
   ],
