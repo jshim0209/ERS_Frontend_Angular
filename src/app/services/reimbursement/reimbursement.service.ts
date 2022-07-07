@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { ReimbursementDto } from 'src/app/models/ReimbursementDto';
 import { environment } from 'src/environments/environment';
 
@@ -10,26 +10,30 @@ export class ReimbursementService {
 
   constructor(private httpClient: HttpClient) {}
 
-  user = JSON.parse(localStorage.getItem('user') || "");
-  userId = this.user.id;
-  userRole = this.user.userRole.role;
-  jwt = JSON.parse(localStorage.getItem('jwt') || "");
+  userId = localStorage.getItem('userId');
+  userRole = localStorage.getItem('userRole');
+  jwt = localStorage.getItem('jwt');
+  status = localStorage.getItem('status');
 
   getAllReimbursements() {
     const url = `${environment.BACKEND_URL}/reimbursements`;
     return this.httpClient.get<ReimbursementDto[]>(url, {
-      'headers': {
-        'Authorization': `Bearer ${this.jwt}`
-      }
     });
   }
 
-  getReimbursementByUser(userId: number) {
+  getReimbursementByUser(userId: string|null) {
+    console.log(userId);
     const url = `${environment.BACKEND_URL}/users/${userId}/reimbursements`;
     return this.httpClient.get<ReimbursementDto[]>(url, {
-      'headers': {
-        'Authorization': `Bearer ${this.jwt}`
-      }
+    });
+  }
+
+  getReimbursementByStatus(status: string|null) {
+    console.log(localStorage.getItem('status'));
+    status = localStorage.getItem('status');
+    const url = `${environment.BACKEND_URL}/reimbursements?status=${status}`;
+    return this.httpClient.get<ReimbursementDto[]>(url, {
+
     });
   }
 

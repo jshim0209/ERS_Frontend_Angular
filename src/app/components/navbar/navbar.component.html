@@ -1,7 +1,18 @@
-<!-- <mat-toolbar fxLayout="row" fxLayoutGap="20px" *ngIf="isLoggedIn | async as isLoggedIn"> -->
-<mat-toolbar fxLayout="row" fxLayoutGap="20px">
-  <div fxFlex="auto"><a routerLink="/">Expense-Reimbursement-System</a></div>
-  <div id="logout" *ngIf="loginStatus" fxFlexAlign="right" (click)="onLogout()">Logout</div>
-</mat-toolbar>
-
+<div class="nav-container">
+  <div class="nav-title">
+    <div>
+      <a href="/login">
+        <img class="logo" src="../../../assets/images/benjamin_head.png" alt="">
+      </a>
+    </div>
+    <div class="home">
+      <a routerLink="/login">
+        Expense Reimbursement System
+      </a>
+    </div>
+  </div>
+  <div class="logout">
+    <button class="button" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+  </div>
+</div>
 

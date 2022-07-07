@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
-
+import { Router } from '@angular/router';
+// import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,19 +9,60 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  loginStatus!: boolean;
-
-  constructor(private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    // private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
-    this.authService.loginStatus.subscribe( value => {
-      this.loginStatus = value;
-    })
-
+    // this.checkRouterLink();
+    // this.authService
   }
 
-  onLogout() {
-    this.authService.logout();
+  logout() {
+    localStorage.clear();
+    // this.loggedIn = false;
+    this.router.navigate(['/login']);
   }
 
+  isLoggedIn(){
+    if(localStorage.getItem('jwt') != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  // isLoggedIn() {
+  //   let jwt = localStorage.getItem('jwt');
+  //   let userRole = localStorage.getItem('userRole');
+  //   if (jwt != null && userRole) {
+  //     let validJwt = false;
+  //     this.authService.authUser({ jwt: jwt, userRole: userRole}).subscribe({
+  //       next: (response) => {
+  //         if (response.status == 200) {
+  //           validJwt = true;
+  //           this.authService.loginNotification.emit();
+  //         } else {
+  //           this.authService.logoutNotification.emit();
+  //         }
+  //       },
+  //       error: (error) => {
+  //         console.log(error);
+  //         this.authService.logoutNotification.emit();
+  //       }
+  //     });
+  //     return validJwt;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
+  // checkRouterLink() {
+  //   if (this.router.url == '/home' || this.router.url == '/filterBy?') {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 }

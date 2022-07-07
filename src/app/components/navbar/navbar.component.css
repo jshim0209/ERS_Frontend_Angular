@@ -1,11 +1,25 @@
-.spacer {
-  flex: 1 2 auto;
-  text-align: right;
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
 }
 
-mat-toolbar {
-  background-color: rgb(49, 34, 6);
-  color: white;
+.nav-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  max-width: 100px;
+  max-height: 100px;
 }
 
 a {
@@ -13,7 +27,11 @@ a {
   color: white;
 }
 
-#logout {
+.logout {
     cursor: pointer;
+}
+
+.button {
+  color: white;
 }
 

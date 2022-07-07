@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { ReimbursementDto } from "src/app/models/ReimbursementDto";
+import { Status } from "src/app/models/Status";
 import { ReimbursementService } from "src/app/services/reimbursement/reimbursement.service";
 
 @Component({
@@ -9,26 +11,36 @@ import { ReimbursementService } from "src/app/services/reimbursement/reimburseme
 })
 export class ManagerHomeComponent implements OnInit {
 
+  @Input() status!: Status;
+
   reimbursementDtos!: ReimbursementDto[];
+  firstName = localStorage.getItem('firstName');
+  statusArray: String[] = ["Pending", "Approved", "Rejected"];
+  value!: string;
 
-  user = JSON.parse(localStorage.getItem("user") || "");
-  firstName = this.user.firstName;
-
-  constructor(private reimbursementService: ReimbursementService) { }
+  constructor(
+    private reimbursementService: ReimbursementService,
+    ) { }
 
   getAllReimbursements() {
 
     this.reimbursementService.getAllReimbursements().subscribe(data => {
       if(data) this.reimbursementDtos = data;
-      // next: (data) => {
-      //   this.reimbursementDtos = data;
-      // }
     });
   }
 
-  ngOnInit(): void {
-
-    this.getAllReimbursements();
+  filterByStatus(value: string) {
+    localStorage.setItem('status', value);
+    if (value == "All") {
+      this.reimbursementService.getAllReimbursements();
+    } else {
+      this.reimbursementService.getReimbursementByStatus(this.value).subscribe(data => {
+        if(data) this.reimbursementDtos = data;
+      })
+    }
   }
 
+  ngOnInit(): void {
+    this.getAllReimbursements();
+  }
 }
