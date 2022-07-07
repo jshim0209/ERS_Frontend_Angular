@@ -1,0 +1,74 @@
+mat-card {
+  text-align: center;
+  margin: 100px auto;
+  width: 43%;
+  min-width: 400px;
+  max-width: 700px;
+  height: 850px;
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50.32%;
+  right: 34.25%;
+  top: 11.53%;
+  bottom: 81.01%;
+  margin: 40px 0 70px 0;
+}
+
+#logo {
+  width: 50px;
+}
+
+#header>#text {
+  font-family: 'Billabong', sans-serif;
+  padding-top: 5px;
+  vertical-align: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 100%;
+  letter-spacing: 0.025em;
+  color: #262626;
+}
+
+input {
+  padding: 20px;
+  width: 90%;
+  height: 57px;
+  box-sizing: border-box;
+  background: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+}
+
+::placeholder {
+  color: #dbdbdb;
+}
+
+form>div {
+  margin: 10px;
+}
+
+p {
+  text-align: left;
+  margin: 8px 0 20px 5%;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0.025em;
+  color: #cb5b5b;
+}
+
+.transparent {
+  visibility: hidden;
+}
+
+#submit {
+  margin-right: 8%;
+  margin-top: 0;
+}

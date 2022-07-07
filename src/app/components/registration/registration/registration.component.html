@@ -1,0 +1,51 @@
+<mat-card>
+  <div id="header">
+    <span id="text">Register</span>
+  </div>
+
+  <form id="registrationForm" [formGroup]="registrationForm">
+    <div>
+      <input type="text" name="firstName" id="firstName" placeholder="FirstName" formControlName="firstName">
+      <p id="firstNameError" [ngClass]="firstNameIsEmpty ? '' : 'transparent'">*First Name is Requred</p>
+    </div>
+    <div>
+      <input type="text" name="lastName" id="lastName" placeholder="LastName" formControlName="lastName">
+      <p id="lastNameError" [ngClass]="lastNameIsEmpty ? '' : 'transparent'">*Last Name is Requred</p>
+    </div>
+    <div>
+      <input type="text" name="username" id="username" placeholder="Username" formControlName="username">
+      <p id="usernameError" [ngClass]="usernameIsEmpty ? '' : 'transparent'">*Username is Requred</p>
+    </div>
+    <div>
+      <input type="password" name="password" id="password" placeholder="Password" formControlName="password">
+      <p id="passwordError" [ngClass]="passwordIsEmpty? '' : 'transparent'">*Password is Requred</p>
+    </div>
+    <div>
+      <input type="text" name="email" id="email" placeholder="Email" formControlName="email">
+      <p id="emailError" [ngClass]="emailIsEmpty? '' : 'transparent'">*Email is Requred</p>
+    </div>
+    <!-- <div>
+      <input type="text" name="userRole" id="userRole" placeholder="UserRole" formControlName="userRole">
+      <p id="userRoleError" [ngClass]="userRoleIsEmpty? '' : 'transparent'">*User Role is Requred</p>
+    </div> -->
+    <!-- <div> -->
+
+      <!-- <select [(ngModel)]="userRole">
+        <option *ngFor="let userRole of userRoles" [value]="userRole">{{userRole.role}}</option>
+      </select> -->
+
+      <!-- <select name="userRole" id="userRole" placeholder="UserRole" formControlName="userRole">
+        <option value="{{userRole}}" *ngFor="let userRole of userRoles">{{userRole.role}}</option>
+        <p id="userRoleError" [ngClass]="userRoleIsEmpty? '' : 'transparent'">*User Role is Requred</p>
+      </select>
+    </div> -->
+    <div name="userRole" id="userRole" formControlName="userRole">
+      <select [(ngModel)] = "selectedObject"></select>
+      <option *ngFor="let uR of userRoleObjects" [ngValue]="uR">{{uR.role}}</option>
+    </div>
+    <div id="submit">
+      <button type="submit" (click)="register()">Register</button>
+    </div>
+  </form>
+</mat-card>
+
