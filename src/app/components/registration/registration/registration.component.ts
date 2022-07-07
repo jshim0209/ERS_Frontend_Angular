@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpDto } from 'src/app/models/SignUpDto';
 import { UserRole } from 'src/app/models/UserRole';
@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   selectedObject!: UserRole;
   userRoleObjects!: UserRole[];
 
-  registrationForm!: FormGroup;
+  registrationForm!: UntypedFormGroup;
   usernameIsEmpty: boolean = false;
   passwordIsEmpty: boolean = false;
   firstNameIsEmpty: boolean = false;
@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private registrationService: RegistrationService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.userRoles = [
       {id: 1, role: "employee"},
@@ -43,17 +43,17 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
-      firstName: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-      lastName: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-      username: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-      password: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-      email: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-      userRole: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+      firstName: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
+      lastName: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
+      username: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
+      password: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
+      email: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
+      userRole: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
     });
 
   }
 
-  noWhitespaceValidator(control: FormControl) {
+  noWhitespaceValidator(control: UntypedFormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace' : true };
