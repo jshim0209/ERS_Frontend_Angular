@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpDto } from 'src/app/models/SignUpDto';
-import { UserRole } from 'src/app/models/UserRole';
 import { RegistrationService } from 'src/app/services/registration/registration.service';
 
 @Component({
@@ -15,9 +14,6 @@ export class RegistrationComponent implements OnInit {
   // @Input() userRole!: UserRole;
 
   userRoles = [{id : 1, role : "employee"}, {id : 2, role : "finance_manager"}]
-
-  selectedObject!: UserRole;
-  userRoleObjects!: UserRole[];
 
   registrationForm!: UntypedFormGroup;
   usernameIsEmpty: boolean = false;
@@ -34,12 +30,7 @@ export class RegistrationComponent implements OnInit {
     private registrationService: RegistrationService,
     private router: Router,
     private fb: UntypedFormBuilder
-  ) {
-    this.userRoles = [
-      {id: 1, role: "employee"},
-      {id: 2, role: "finance_manager"}
-    ]
-   }
+  ) {}
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -48,7 +39,7 @@ export class RegistrationComponent implements OnInit {
       username: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
       password: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
       email: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
-      userRole: new UntypedFormControl('', [Validators.required, this.noWhitespaceValidator]),
+      userRole: new UntypedFormControl('', [Validators.required]),
     });
 
   }

@@ -37,17 +37,6 @@ export class LoginComponent implements OnInit {
     this.authService.loginNotification.subscribe(() => {
       this.router.navigate(['/login']);
     })
-
-
-
-    // if(localStorage.getItem('jwt')) {
-    //   this.router.navigate(['/login'])
-    // } else {
-    //   this.loginForm = this.fb.group({
-    //     username: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    //     password: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    //   })
-    // }
   }
 
   noWhitespaceValidator(control: UntypedFormControl) {
