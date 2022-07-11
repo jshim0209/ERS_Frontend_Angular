@@ -1,0 +1,54 @@
+<mat-card>
+  <div id="header">
+    <span id="text">Register</span>
+  </div>
+
+  <form id="registrationForm" [formGroup]="registrationForm">
+    <!-- <div>
+      <div id="selectRole">
+        <label for="userRole">Select User Role</label>
+      </div>
+      <select name="userRole" id="userRole" placeholder="UserRole" formControlName="userRole">
+      <option [ngValue]="userRoles[0]">Employee</option>
+      <option [ngValue]="userRoles[1]">Finance Manager</option>
+      </select>
+    </div> -->
+
+    <div>
+      <h1 id="roleHeader">Select User Role</h1>
+      <div id="selectRole">
+        <label>
+          <input [value]="userRoles[0]" type="radio" name="userRole" id="employee" formControlName="userRole" >Employee
+        </label>
+        <label>
+          <input [value]="userRoles[1]" type="radio" name="userRole" id="financeManager" formControlName="userRole" >Finance Manager
+        </label>
+      </div>
+    </div>
+
+
+    <div>
+      <input type="text" name="firstName" id="firstName" placeholder="FirstName" formControlName="firstName">
+      <p id="firstNameError" [ngClass]="firstNameIsEmpty ? '' : 'transparent'">*First Name is Requred</p>
+    </div>
+    <div>
+      <input type="text" name="lastName" id="lastName" placeholder="LastName" formControlName="lastName">
+      <p id="lastNameError" [ngClass]="lastNameIsEmpty ? '' : 'transparent'">*Last Name is Requred</p>
+    </div>
+    <div>
+      <input type="text" name="username" id="username" placeholder="Username" formControlName="username">
+      <p id="usernameError" [ngClass]="usernameIsEmpty ? '' : 'transparent'">*Username is Requred</p>
+    </div>
+    <div>
+      <input type="password" name="password" id="password" placeholder="Password" formControlName="password">
+      <p id="passwordError" [ngClass]="passwordIsEmpty? '' : 'transparent'">*Password is Requred</p>
+    </div>
+    <div>
+      <input type="text" name="email" id="email" placeholder="Email" formControlName="email">
+      <p id="emailError" [ngClass]="emailIsEmpty? '' : 'transparent'">*Email is Requred</p>
+    </div>
+    <div id="submit">
+      <button type="submit" (click)="register()">Register</button>
+    </div>
+  </form>
+</mat-card>

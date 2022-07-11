@@ -1,0 +1,18 @@
+<div class="nav-container">
+  <div class="nav-title">
+    <div>
+      <a href="/login">
+        <img class="logo" src="../../../assets/images/benjamin_head.png" alt="">
+      </a>
+    </div>
+    <div class="home">
+      <a routerLink="/login">
+        Expense Reimbursement System
+      </a>
+    </div>
+  </div>
+  <div class="logout">
+    <button class="button" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+  </div>
+</div>
+
