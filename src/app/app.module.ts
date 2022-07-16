@@ -18,6 +18,8 @@ import { ManagerHomeComponent } from './components/manager-home/manager-home.com
 import { EmployeeHomeComponent } from './components/employee-home/employee-home.component';
 import { RegistrationComponent } from './components/registration/registration/registration.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { ModalComponent } from './components/modal/modal.component';
     FormsModule,
     ReactiveFormsModule,
     MatGridListModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
