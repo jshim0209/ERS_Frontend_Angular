@@ -22,15 +22,12 @@ export class ReimbursementService {
   }
 
   getReimbursementByUser(userId: string|null) {
-    console.log(userId);
     const url = `${environment.BACKEND_URL}/users/${userId}/reimbursements`;
     return this.httpClient.get<ReimbursementDto[]>(url, {
     });
   }
 
   getReimbursementByStatus(status: string|null) {
-    console.log(localStorage.getItem('status'));
-    status = localStorage.getItem('status');
     const url = `${environment.BACKEND_URL}/reimbursements?status=${status}`;
     return this.httpClient.get<ReimbursementDto[]>(url, {
 

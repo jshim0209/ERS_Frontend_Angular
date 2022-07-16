@@ -19,6 +19,7 @@ import { EmployeeHomeComponent } from './components/employee-home/employee-home.
 import { RegistrationComponent } from './components/registration/registration/registration.component';
 import { ModalComponent } from './components/modal/modal.component';
 
+
 @NgModule({
 
   declarations: [
