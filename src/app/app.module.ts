@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManagerHomeComponent } from './components/manager-home/manager-home.component';
 import { EmployeeHomeComponent } from './components/employee-home/employee-home.component';
 import { RegistrationComponent } from './components/registration/registration/registration.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
 
@@ -27,6 +28,7 @@ import { RegistrationComponent } from './components/registration/registration/re
     ManagerHomeComponent,
     EmployeeHomeComponent,
     RegistrationComponent,
+    ModalComponent,
   ],
 
   imports: [
@@ -42,7 +44,7 @@ import { RegistrationComponent } from './components/registration/registration/re
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
